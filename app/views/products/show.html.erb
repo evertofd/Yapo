@@ -1,0 +1,28 @@
+<div class="text-center">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @product.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @product.descripcion %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @product.precio %>
+</p>
+
+<p>
+  <strong>Disponible:</strong>
+  <%= @product.disponible %>
+</p>
+
+<%= link_to 'Editar', edit_product_path(@product),class: "btn btn-info" %> |
+<%= link_to 'Inicio', root_path, class: "btn btn-warning" %>
+
+</div>

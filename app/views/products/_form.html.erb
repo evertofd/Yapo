@@ -1,0 +1,58 @@
+<%= form_with(model: product, local: true, class: "form-horizontal") do |form| %>
+<% if product.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+  <ul>
+    <% product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group text-center">
+  <%= form.label :nombre, "Título", class: "col-lg-2 control-label" %>
+  <div class="col-lg-10">
+    <%= form.text_field :nombre, id: :product_nombre %>
+  </div>
+</div>
+
+<div class="form-group form-group-custom">
+  <%= form.label :picture, "URL Imagen", class: "col-lg-2 control-label" %>
+  <div class="col-lg-10">
+    <%= image_tag(product.picture, style: "margin-bottom: 10px; border-radius: 5px;") if product.picture? %>
+
+    <%= form.text_field :picture, id: :product_picture, class: "form-control" %>
+  </div>
+  <%= form.hidden_field :picture_cache %>
+</div>
+
+
+
+<div class="form-group">
+  <%= form.label :descripcion, "Descripción", class: "col-lg-2 control-label" %>
+  <div class="col-lg-10">
+    <%= form.text_area :descripcion, id: :product_content, class: "form-control", rows: 10 %>
+  </div>
+</div>
+
+<div class="form-group text-center">
+  <%= form.label :precio, "Precio", class: "col-lg-2 control-label" %>
+  <%= form.number_field :precio, id: :product_precio %>
+</div>
+
+<div class="field">
+  <%= form.label :disponible %>
+  <%= form.check_box :disponible, id: :product_disponible %>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-10 col-lg-offset-2">
+    <%= form.submit "Enviar", class: "btn btn-primary" %>
+    <%= link_to 'Volver', products_path, class: "btn btn-warning"  %>
+    <%= link_to 'Editar Productos', products_venta_path, class: "btn btn-succes"  %>
+  </div>
+</div>
+<fieldset>
+  <% end %>

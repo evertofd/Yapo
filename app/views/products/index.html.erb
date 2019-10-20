@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-8 col-sm-10 col-md-10">
+    <h1 class="text-center text-secondary">Bienvenidos</h1>
+  </div>
+
+
+  <div class="row">
+    <% @products.each do |product| %>
+    <div class="col-sm-4">
+
+      <div class="thumbnail">
+
+        <figure>
+
+          <%= image_tag(product.picture, class: 'img-responsive') if product.picture? %>
+        </figure>
+
+
+        <div class="caption text-center">
+
+          <h3>  <%= product.nombre %></h3>
+
+          <h3><%= product.descripcion %></h3>
+          <h3><%= link_to  product.user.name, perfil_path(product.user) %> </h3>
+
+
+          <h3>    <%= product.precio %></h3>
+          <p><small><%= time_ago_in_words(product.created_at) %> ago</small></p>
+          <%= link_to 'Comprar', products_comprar_path(product), class: "btn btn-warning"  %>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>

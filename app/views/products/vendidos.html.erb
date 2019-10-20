@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-8 col-sm-10 col-md-10">
+    <h1 class="text-center text-secondary">Vendidos</h1>
+  </div>
+
+
+  <div class="row">
+    <% @products.each do |product| %>
+    <%  if product.disponible == false %>
+    <div class="col-sm-4">
+
+      <div class="thumbnail">
+
+        <figure>
+
+          <%= image_tag(product.picture, class: 'img-responsive') if product.picture? %>
+        </figure>
+
+
+        <div class="caption text-center">
+
+          <h3>  <%= product.nombre %></h3>
+
+          <h3><%= product.descripcion %></h3>
+
+
+
+          <h3>    <%= product.precio %></h3>
+          <p><small><%= time_ago_in_words(product.created_at) %> ago</small></p>
+
+
+
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
